@@ -1,0 +1,191 @@
+try and catch
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a;
+	cin>>a;
+	try
+	{
+		if(a<=500)
+		{
+			throw 500;
+		}
+		else if(a>500 && a<=1000)
+		{
+			throw 'e';
+		}
+	}
+	catch(int e)
+	{
+		cout<<"500 error "<<e;
+	}
+	catch(char c)
+	{
+		cout<<"global error "<<c;
+	}
+	return 0;
+}
+**********************************************
+cerr
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+   char str[] = "Unable to read....";
+ 
+   cerr << "Error message : " << str << endl;
+}
+************************************************
+clog
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+   char str[] = "Unable to read....";
+ 
+   clog << "Error message : " << str << endl;
+}
+***********************************************
+template
+
+#include <iostream>
+ 
+using namespace std;
+ 
+template <class T>
+inline T square(T x)
+{
+    T result;
+    result =x*x;
+    return result;
+};
+
+int main()
+{
+   int    i, ii;
+   float  x, xx;
+   double y, yy;
+
+   i = 2;
+   x = 2.2;
+   y = 2.2;
+
+   ii = square<int>(i);
+   cout << i << ": " << ii << endl;
+
+   xx = square<float>(x);
+   cout << x << ": " << xx << endl;
+
+   yy = square<double>(y);
+   cout << y << ": " << yy << endl;
+
+   yy = square(y);
+   cout << y << ": " << yy << endl;
+   return 0;
+}
+***********************************
+concatenate two characters
+
+#include <iostream>
+#include<string.h> 
+using namespace std;
+
+
+int main()
+{
+   char a='a',b='b';
+   char z[]={a,b};
+   char s[10];
+   cout<<strcat(s,z);
+   return 0;
+}
+**********************************
+friend function
+
+#include <iostream>  
+using namespace std;  
+class Box  
+{  
+    private:  
+        int length;  
+    public:  
+        Box(): length(20) { }  
+        friend int printLength(Box); //friend function  
+};  
+int printLength(Box b)  
+{  
+    b.length += 10;  
+    return b.length;  
+}  
+int main()  
+{  
+    Box b;  
+    cout<<"Length of box: "<< printLength(b)<<endl;  
+    return 0;  
+}  
+*********************************************
+#include <iostream>
+using namespace std;
+
+class Distance
+{
+    private:
+        int meter;
+    public:
+        Distance(): meter(0) { }
+        //friend function
+        friend int addFive(Distance);
+};
+
+// friend function definition
+int addFive(Distance d)
+{
+    //accessing private data from non-member function
+    d.meter += 5;
+    return d.meter;
+}
+
+int main()
+{
+    Distance D;
+    cout<<"Distance: "<< addFive(D);
+    return 0;
+}
+******************************************
+#include<iostream>
+using namespace std;
+
+class Add{
+	
+	int a;
+	int b;
+	int result;
+	
+	public :
+		Add():a(25),b(50){
+		}
+		
+		friend int addop(Add);
+		
+};
+
+    int addop(Add obj){
+    	obj.result = obj.a + obj.b;
+    	return obj.result;
+    	
+    	
+	}
+	
+	int main()
+	{
+		Add obj;
+		
+		cout << " the sum of the numbers is " << addop(obj);
+		
+	}
